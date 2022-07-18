@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import Counter from './components/Counter'
+
 
 function App() {
   
 
   return (
-    <>
-    <Counter />
-    <Counter />
-    <Counter />
-    <Counter />
-    </>
+    <div className="app">
+      <div className="post">
+        <div className="post__content">
+          <strong>1. JS</strong>
+          <div>
+            Lorem ipsum, sit amet.
+          </div>
+        </div>
+        <div className="post__btns">
+          <button>Delete</button>
+        </div>
+      </div>
+    </div>
   );
 }
 
