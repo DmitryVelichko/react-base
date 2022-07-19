@@ -14,7 +14,7 @@ function App() {
   return <div className='app'>
     <input type="text" placeholder='Post name' />
     <input type="text" placeholder='Post description' />
-    <MyButton>Create Post</MyButton>
+    <MyButton disabled>Create Post</MyButton>
     <PostList posts={posts} title='Post List JS'/>
   </div>;
 }
