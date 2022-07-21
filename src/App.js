@@ -12,19 +12,33 @@ function App() {
   ]);
 
   const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
-  const bodyInputRef = useRef();
+
 
   const addNewPost = (e) => {
-   e.preventDefault()
-   console.log(bodyInputRef.current.value)
+    const newPost= {
+      id: Date.now(),
+      title,
+      body
+    }
+    setPosts([...posts, newPost])
   };
 
   return (
     <div className='app'>
-      <MyInput value={title} onChange={e => setTitle(e.target.value)}
-      type='text' placeholder='Post name' />
-      <MyInput ref={bodyInputRef} type='text' placeholder='Post description' />
+      <MyInput
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        type='text'
+        placeholder='Post name'
+      />
+      <MyInput
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+        type='text'
+        placeholder='Post description'
+      />
       <MyButton onClick={addNewPost}>Create Post</MyButton>
       <PostList posts={posts} title='Post List JS' />
     </div>
