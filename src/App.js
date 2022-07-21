@@ -24,8 +24,7 @@ function App() {
     <div className='app'>
       <MyInput value={title} onChange={e => setTitle(e.target.value)}
       type='text' placeholder='Post name' />
-      <input ref={bodyInputRef} type="text" />
-      {/* <MyInput ref={bodyInputRef} type='text' placeholder='Post description' /> */}
+      <MyInput ref={bodyInputRef} type='text' placeholder='Post description' />
       <MyButton onClick={addNewPost}>Create Post</MyButton>
       <PostList posts={posts} title='Post List JS' />
     </div>
