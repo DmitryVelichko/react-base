@@ -1,10 +1,14 @@
 import React from 'react';
 
-const MySelect = () => {
+const MySelect = ({options, defaultValue}) => {
   return (
     <select>
-      <option value='value1'>Name</option>
-      <option value='value1'>Description</option>
+      <option value=''>{defaultValue}</option>
+        {options.map(option =>
+            <option value={option.value}>
+                {option.name}
+            </option>
+            )}
     </select>
   );
 };
