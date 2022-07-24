@@ -23,7 +23,10 @@ function App() {
     <div className='app'>
       <PostForm create={createPost} />
         <div>
-         <MySelect />
+         <MySelect 
+          defaultValue='Sort by'
+          options={[]}
+         />
         </div>
       {posts.length ? (
         <PostList posts={posts} remove={removePost} title='Post List JS' />
