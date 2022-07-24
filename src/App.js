@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import './styles/App.css';
 import PostList from './components/PostList.jsx';
 import PostForm from './components/PostForm';
+import MySelect from './components/UI/select/MySelect';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -22,10 +23,7 @@ function App() {
     <div className='app'>
       <PostForm create={createPost} />
         <div>
-          <select>
-            <option value="value1">Name</option>
-            <option value="value1">Description</option>
-          </select>
+         <MySelect />
         </div>
       {posts.length ? (
         <PostList posts={posts} remove={removePost} title='Post List JS' />
