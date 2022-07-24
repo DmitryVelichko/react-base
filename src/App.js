@@ -11,22 +11,27 @@ function App() {
   ]);
 
   const createPost = (newPost) => {
-    setPosts([...posts, newPost])
-  }
+    setPosts([...posts, newPost]);
+  };
 
   const removePost = (post) => {
-    setPosts(posts.filter(p => p.id !== post.id))
-  }
-  
+    setPosts(posts.filter((p) => p.id !== post.id));
+  };
 
   return (
     <div className='app'>
       <PostForm create={createPost} />
-      {posts.length !== 0 
-      ? <PostList posts={posts} remove={removePost} title='Post List JS' />
-      : <div>Посты не найдены</div>
-
-      }
+        <div>
+          <select>
+            <option value="value1">Name</option>
+            <option value="value1">Description</option>
+          </select>
+        </div>
+      {posts.length ? (
+        <PostList posts={posts} remove={removePost} title='Post List JS' />
+      ) : (
+        <h1 style={{ textAlign: 'center' }}>Посты не найдены!</h1>
+      )}
     </div>
   );
 }
