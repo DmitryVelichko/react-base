@@ -3,6 +3,7 @@ import './styles/App.css';
 import PostList from './components/PostList.jsx';
 import PostForm from './components/PostForm';
 import MySelect from './components/UI/select/MySelect';
+import MyInput from './components/UI/input/MyInput';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -12,6 +13,7 @@ function App() {
   ]);
 
   const [selectedSort, setSelectedSort] = useState('');
+  const [SearchQuery, setSearchQuery] = useState('');
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -23,24 +25,26 @@ function App() {
 
   const sortPosts = (sort) => {
     setSelectedSort(sort);
-    console.log(sort)
-    setPosts([...posts].sort((a, b) => a[sort].localeCompare(b[sort])))
-  }
+    console.log(sort);
+    setPosts([...posts].sort((a, b) => a[sort].localeCompare(b[sort])));
+  };
 
   return (
     <div className='app'>
       <PostForm create={createPost} />
-        <div>
-         <MySelect 
+      <hr style={{ margin: '15px 0' }} />
+      <div>
+        <MyInput placeholder='Search...' />
+        <MySelect
           value={selectedSort}
           onChange={sortPosts}
           defaultValue='Sort by'
           options={[
-            {value: 'title', name: 'By name'},
-            {value: 'body', name: 'By description'}
+            { value: 'title', name: 'By name' },
+            { value: 'body', name: 'By description' },
           ]}
-         />
-        </div>
+        />
+      </div>
       {posts.length ? (
         <PostList posts={posts} remove={removePost} title='Post List JS' />
       ) : (
