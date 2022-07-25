@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useMemo } from 'react';
 import './styles/App.css';
 import PostList from './components/PostList.jsx';
 import PostForm from './components/PostForm';
@@ -15,6 +15,15 @@ function App() {
   const [selectedSort, setSelectedSort] = useState('');
   const [SearchQuery, setSearchQuery] = useState('');
 
+  const sortedPosts = useMemo(() => {
+    console.log("функция отработала")
+    if(selectedSort) {
+      return [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
+    }
+    return posts
+  },[selectedSort, posts])
+
+
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
@@ -25,8 +34,6 @@ function App() {
 
   const sortPosts = (sort) => {
     setSelectedSort(sort);
-    console.log(sort);
-    setPosts([...posts].sort((a, b) => a[sort].localeCompare(b[sort])));
   };
 
   return (
@@ -34,7 +41,10 @@ function App() {
       <PostForm create={createPost} />
       <hr style={{ margin: '15px 0' }} />
       <div>
-        <MyInput placeholder='Search...' />
+        <MyInput 
+        value={SearchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
+        placeholder='Search...' />
         <MySelect
           value={selectedSort}
           onChange={sortPosts}
@@ -46,7 +56,7 @@ function App() {
         />
       </div>
       {posts.length ? (
-        <PostList posts={posts} remove={removePost} title='Post List JS' />
+        <PostList posts={sortedPosts} remove={removePost} title='Post List JS' />
       ) : (
         <h1 style={{ textAlign: 'center' }}>Посты не найдены!</h1>
       )}
