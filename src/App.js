@@ -11,6 +11,8 @@ function App() {
     { id: 3, title: 'JS 3', body: 'Description' },
   ]);
 
+  const [selectedSort, setSelectedSort] = useState('');
+
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
@@ -24,6 +26,8 @@ function App() {
       <PostForm create={createPost} />
         <div>
          <MySelect 
+          value={selectedSort}
+          onChange={sort => setSelectedSort(sort)}
           defaultValue='Sort by'
           options={[
             {value: 'title', name: 'By name'},
