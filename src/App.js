@@ -40,7 +40,9 @@ function App() {
   return (
     <div className='app'>
       <PostForm create={createPost} />
+
       <hr style={{ margin: '15px 0' }} />
+
       <PostFilter filter={filter} setFilter={setFilter} />
 
       <PostList
