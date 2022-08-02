@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import classes from './MyModal.module.css';
 
-const MyModal = () => {
+const MyModal = ({children}) => {
   return (
-    <div>MyModal</div>
-  )
-}
+    <div className={classes.myModal}>
+      <div className={classes.myModalContent}>
+        {children}
+      </div>
+    </div>
+  );
+};
 
-export default MyModal
+export default MyModal;
