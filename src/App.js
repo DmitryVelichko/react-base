@@ -2,8 +2,8 @@ import React, { useState, useMemo } from 'react';
 import './styles/App.css';
 import PostList from './components/PostList.jsx';
 import PostForm from './components/PostForm';
-
 import PostFilter from './components/PostFilter';
+import MyModal from './components/UI/myModal/MyModal';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -39,12 +39,11 @@ function App() {
 
   return (
     <div className='app'>
-      <PostForm create={createPost} />
-
+      <MyModal>
+        <PostForm create={createPost} />
+      </MyModal>
       <hr style={{ margin: '15px 0' }} />
-
       <PostFilter filter={filter} setFilter={setFilter} />
-
       <PostList
         posts={sortedAndSearchedPosts}
         remove={removePost}
