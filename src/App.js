@@ -1,26 +1,34 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './styles/App.css';
 import PostList from './components/PostList.jsx';
 import PostForm from './components/PostForm';
 import PostFilter from './components/PostFilter';
 import MyModal from './components/UI/myModal/MyModal';
 import MyButton from './components/UI/button/MyButton';
+import { usePosts } from './hooks/usePosts';
+import axios from 'axios';
+import PostService from './API/PostService';
 
 function App() {
-  const [posts, setPosts] = useState([
-    { id: 1, title: 'bbbbJS', body: 'bbbbDescription' },
-    { id: 2, title: 'ccccJS 2', body: 'ccccDescription' },
-    { id: 3, title: 'aaaaJS 3', body: 'aaaaDescription' },
-  ]);
-
+  const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({ sort: '', query: '' });
-
   const [modal, setModal] = useState(false);
+  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query)
+
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
     setModal(false);
   };
+
+  async function fetchPosts() {
+    const posts = await PostService.getAll();
+    setPosts(posts)
+  }
 
   // Получаем post из дочернего компонента
   const removePost = (post) => {
