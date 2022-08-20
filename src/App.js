@@ -34,15 +34,17 @@ function App() {
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
+    setModal(false);
   };
 
+  // Получаем post из дочернего компонента
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id));
   };
 
   return (
     <div className='app'>
-      <MyButton onClick={() => setModal(true)}>
+      <MyButton style={{ marginTop: 30 }} onClick={() => setModal(true)}>
         Create User
       </MyButton>
       <MyModal visible={modal} setVisible={setModal}>
