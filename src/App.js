@@ -12,9 +12,9 @@ const App = () => {
 
   return (
     <div className='App'>
-      {posts.map((post) => {
-       return <PostItem post={post} />
-      })}
+      {posts.map((post) => 
+        <PostItem post={post} />
+      )}
     </div>
   )
 }
