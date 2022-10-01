@@ -14,3 +14,9 @@ const App = () => {
     <div className='App'>
       {posts.map((post) => {
        return <PostItem post={post} />
+      })}
+    </div>
+  )
+}
+
+export default App
