@@ -10,3 +10,7 @@ const App = () => {
     {id: 3, title: 'JavaScript 3', body: 'Description'},
   ])
 
+  return (
+    <div className='App'>
+      {posts.map((post) => {
+       return <PostItem post={post} />
