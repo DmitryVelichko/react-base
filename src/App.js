@@ -12,9 +12,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      {posts.map((post) => 
-        <PostItem post={post} />
-      )}
+      
     </div>
   )
 }
