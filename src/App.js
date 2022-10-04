@@ -17,14 +17,19 @@ const App = () => {
 
   const addNewPost = (e) => {
     e.preventDefault()
-    console.log(title)
+    const newPost = {
+      id: Date.now(),
+      title,
+      body
+    }
+    setPosts([...posts, newPost])
   }
 
   return (
     <div className='App'>
       <form>
         <MyInput value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Название поста'/>
-        <MyInput value={body} onChange={e => setBody(e.target.value) type="text" placeholder='Описание поста'/>
+        <MyInput value={body} onChange={e => setBody(e.target.value)} type="text" placeholder='Описание поста'/>
         <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
       <PostList posts={posts} title='Посты про JS'/>
