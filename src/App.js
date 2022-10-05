@@ -11,12 +11,14 @@ const App = () => {
     {id: 3, title: 'JavaScript 3', body: 'Description'},
   ])
 
-  
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost])
+  }
 
 
   return (
     <div className='App'>
-      <PostForm />
+      <PostForm create={createPost}/>
       <PostList posts={posts} title='Посты про JS'/>
     </div>
   )
