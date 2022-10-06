@@ -24,6 +24,10 @@ const App = () => {
     return posts;
   }, [selectedSort, posts]);
 
+  const sortedAndSearchedPosts = useMemo(() => {
+    return sortedPosts.filter(post => post.title.includes(searchQuery))
+  }, [searchQuery, sortedPosts])
+
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
@@ -59,7 +63,7 @@ const App = () => {
       {posts.length ? (
         <PostList
           remove={removePost}
-          posts={sortedPosts}
+          posts={sortedAndSearchedPosts}
           title='Посты про JS'
         />
       ) : (
