@@ -7,6 +7,7 @@ import './styles/App.css';
 import MyModal from './components/UI/MyModal/MyModal';
 import { usePosts } from './hooks/usePosts';
 import PostService from './API/PostService';
+import Loader from './components/UI/Loader/Loader';
 import axios from 'axios';
 
 const App = () => {
@@ -50,7 +51,9 @@ const App = () => {
       <hr style={{ margin: '15px 0' }} />
       <PostFilter filter={filter} setFilter={setFilter} />
       {isPostsLoading ? (
-        <h1>Идёт загрузка...</h1>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+          <Loader />
+        </div>
       ) : (
         <PostList
           remove={removePost}
