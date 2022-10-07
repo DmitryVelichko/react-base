@@ -14,6 +14,10 @@ const App = () => {
   const [modal, setModal] = useState(false);
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 
+  useEffect(() => {
+
+  }, [])
+
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
     setModal(false);
